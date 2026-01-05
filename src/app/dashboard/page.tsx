@@ -59,11 +59,17 @@ const DashboardPage = () => {
     }
   }, [status, router]);
 
-  // Show loading state while session is being checked
-  if (status === 'loading' || !session) {
+  // Handle unauthenticated state
+  if (!session) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+      <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-4">
+        <p className="mb-4 text-lg text-gray-700">Please login to access the dashboard</p>
+        <button 
+          onClick={() => router.push('/auth/login')}
+          className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+        >
+          Go to Login
+        </button>
       </div>
     );
   }
