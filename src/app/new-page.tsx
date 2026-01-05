@@ -1,0 +1,171 @@
+import Image from 'next/image';
+import Link from 'next/link';
+
+// Hero Banner Component
+const HeroBanner = () => (
+  <div className="relative h-[80vh] w-full overflow-hidden">
+    <div className="absolute inset-0">
+      <Image
+        src="/images/action-cricket.jpg"
+        alt="Action Cricket"
+        fill
+        className="object-cover"
+        priority
+      />
+      <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center text-center px-4">
+        <div className="max-w-4xl mx-auto">
+          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+            Elevate Your Cricket Journey
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-200 mb-8">
+            Where Passion Meets Performance - Nurturing Future Cricket Stars
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link 
+              href="/register" 
+              className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105"
+            >
+              Join Now
+            </Link>
+            <Link 
+              href="/contact" 
+              className="bg-transparent border-2 border-white text-white hover:bg-white hover:bg-opacity-10 font-bold py-3 px-8 rounded-full text-lg transition duration-300"
+            >
+              Contact Us
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+// Highlights Component
+const Highlights = () => {
+  const highlights = [
+    {
+      title: 'Certified Coaches',
+      description: 'Learn from BCCI and NCA certified coaches with years of professional experience.',
+      icon: '👨‍🏫'
+    },
+    {
+      title: 'Turf Nets',
+      description: 'Practice on professional turf wickets with proper bounce and pace.',
+      icon: '🏏'
+    },
+    {
+      title: 'Age Groups',
+      description: 'Specialized training programs for all age groups from 6 years and above.',
+      icon: '👦👨‍🦰👨‍🦳'
+    }
+  ];
+
+  return (
+    <div className="bg-gray-50 py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+            Why Choose Our Academy?
+          </h2>
+          <p className="mt-4 text-xl text-gray-600">
+            Excellence in cricket training with world-class facilities
+          </p>
+        </div>
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+          {highlights.map((item, index) => (
+            <div key={index} className="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300">
+              <div className="text-4xl mb-4">{item.icon}</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
+              <p className="text-gray-600">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Programs Component
+const Programs = () => {
+  const programs = [
+    {
+      name: 'Junior Academy',
+      description: 'For ages 6-16, focusing on fundamentals and love for the game.',
+      price: '₹2,500/month',
+      features: ['Basic skills training', 'Physical conditioning', '2 sessions per week'],
+      cta: 'Learn More',
+      href: '/programs/junior'
+    },
+    {
+      name: 'Advanced Training',
+      description: 'For competitive players looking to take their game to the next level.',
+      price: '₹4,500/month',
+      features: ['Advanced techniques', 'Match simulation', '4 sessions per week', 'Video analysis'],
+      cta: 'Learn More',
+      href: '/programs/advanced'
+    },
+    {
+      name: 'One-on-One Coaching',
+      description: 'Personalized training sessions with our expert coaches.',
+      price: '₹1,500/session',
+      features: ['Custom training plan', 'Focused skill development', 'Flexible scheduling'],
+      cta: 'Book Now',
+      href: '/programs/coaching'
+    },
+  ];
+
+  return (
+    <div className="py-16 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+            Our Programs
+          </h2>
+          <p className="mt-4 text-xl text-gray-600">
+            Comprehensive training programs for all skill levels
+          </p>
+        </div>
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+          {programs.map((program, index) => (
+            <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+              <div className="p-6">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">{program.name}</h3>
+                <p className="text-gray-600 mb-4">{program.description}</p>
+                <div className="text-3xl font-bold text-yellow-500 mb-4">{program.price}</div>
+                <ul className="space-y-2 mb-6">
+                  {program.features.map((feature, i) => (
+                    <li key={i} className="flex items-center">
+                      <svg className="h-5 w-5 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+                <Link 
+                  href={program.href}
+                  className="block w-full text-center bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300"
+                >
+                  {program.cta}
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Main Page Component
+export default function Home() {
+  return (
+    <div className="min-h-screen bg-white">
+      <main>
+        <HeroBanner />
+        <Highlights />
+        <Programs />
+      </main>
+    </div>
+  );
+}

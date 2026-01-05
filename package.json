@@ -1,0 +1,38 @@
+{
+  "name": "cricket-academy",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start",
+    "export": "next build && next export",
+    "lint": "next lint",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "dependencies": {
+    "@auth/mongodb-adapter": "^3.11.1",
+    "@heroicons/react": "^2.2.0",
+    "bcryptjs": "^3.0.3",
+    "lucide-react": "^0.562.0",
+    "mongodb": "^6.21.0",
+    "next": "^16.1.1",
+    "next-auth": "^4.24.13",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "react-icons": "^5.5.0"
+  },
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.28.5",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.1",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/jest": "^30.0.0",
+    "@types/node": "25.0.3",
+    "@types/react": "19.2.7",
+    "typescript": "5.9.3"
+  }
+}
