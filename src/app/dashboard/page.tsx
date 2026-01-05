@@ -48,9 +48,25 @@ const announcements = [
 
 const DashboardPage = () => {
   const { data: session, status } = useSession();
+  const user = session?.user;
   const router = useRouter();
   const [activeTab, setActiveTab] = useState('overview');
   const [unreadCount, setUnreadCount] = useState(announcements.filter(a => !a.read).length);
+
+  useEffect(() => {
+    if (status === 'unauthenticated') {
+      router.push('/auth/login');
+    }
+  }, [status, router]);
+
+  // Show loading state while session is being checked
+  if (status === 'loading' || !session) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+      </div>
+    );
+  }
 
   const markAsRead = (id: number) => {
     // In a real app, this would update the backend
